@@ -50,11 +50,11 @@ app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   res.redirect("/404.html")
-});
 
-res.json('error', {
-  message: err.message,
-  error: err
+  res.json('error', {
+    message: err.message,
+    error: err
+  });
 });
 
 // Error-handling layer.
