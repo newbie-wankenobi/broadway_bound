@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app='app'>
 <head>
   <meta charset="UTF-8">
   <title>Broadway Bound</title>
@@ -17,7 +17,7 @@
 </head>
 <body>
   <div class="container-fluid">
-    <header ng-controller="NavbarController as vm">
+    <!-- <header ng-contro  ller="NavbarController as vm">
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
           <a ui-sref="welcome" class="navbar-brand">Home</a>
@@ -25,7 +25,18 @@
           <button ng-show="vm.authService.isLoggedIn()" type="button" class="btn btn-default navbar-btn navbar-right">Sign out</button>
         </div>
       </nav>
-    </header>
+    </header> -->
+
+  Angular is {{ 1 + 1 }}legit2quit.
+
+  <section ng-controller="MainController as vm">
+    <button ng-click="vm.getEvents()">Get events!</button>
+    <ul>
+      <li ng-repeat="event in vm.events | filter: event.type == 'comedy'" id={{ event.id }}>
+        {{event.short_title}}, {{event.type}}
+      </li>
+    </ul>
+  </section>
 
     <main class="content" ui-view>
       <!-- ui-router (aka ui.router) inserts templates here -->
@@ -33,10 +44,11 @@
 
     <script src="/js/app.module.js"></script>
     <script src="/js/app.routes.js"></script>
-    <script src="/js/token.service.js"></script>
-    <script src="/js/auth.service.js"></script>
-    <script src="/js/user.service.js"></script>
-    <script src="/js/signin.controller.js"></script>
-    <script src="/js/navbar.controller.js"></script>
+    <script src="/controllers/main_controller.js"></script>
+    <!-- <script src="/js/token.service.js"></script> -->
+    <!-- <script src="/js/auth.service.js"></script> -->
+    <!-- <script src="/js/user.service.js"></script> -->
+    <!-- <script src="/js/signin.controller.js"></script> -->
+    <!-- <script src="/js/navbar.controller.js"></script> -->
 </body>
 </html>

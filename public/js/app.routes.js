@@ -11,7 +11,9 @@
       $stateProvider
         .state('welcome', {
           url: '/',
-          templateUrl: '/js/app/layouts/welcome.html'
+          templateUrl: '/js/app/templates/list_events.html',
+          controller: 'MainController',
+          controllerAs: 'vm'
         });
 
       $urlRouterProvider.otherwise('/');
