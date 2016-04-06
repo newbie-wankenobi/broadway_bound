@@ -4,15 +4,9 @@ var mongoose     = require('mongoose'),
     bcrypt       = require('bcrypt-nodejs');
 
 var UserSchema   = new Schema({
-  name:        { type: String, required: true },
-  phoneNumber: {
-                 type: String,
-                 required: true,
-                 index: { unique: true },
-                 minlength: 7,
-                 maxlength: 10
-  },
-  password:    { type: String, required: true, select: false }
+  name:     { type: String, required: true },
+  email:    { type: String, required: true, index: { unique: true } },
+  password: { type: String, required: true, select: false }
 });
 
 UserSchema.set('toJSON', {

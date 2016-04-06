@@ -1,56 +1,67 @@
 <!DOCTYPE html>
 <html lang="en" ng-app='app'>
 <head>
-  <meta charset="UTF-8">
-  <title>Broadway Bound</title>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Broadway Bound</title>
+
 
   <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="/css/main.css">
 
-  <script src="/js/jwt-decode.2.0.1.js"></script>
-
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-resource.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
-
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 </head>
-<body>
-  <div class="container-fluid">
-    <!-- <header ng-contro  ller="NavbarController as vm">
-      <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-          <a ui-sref="welcome" class="navbar-brand">Home</a>
-          <button ng-hide="vm.authService.isLoggedIn()" ui-sref="signin" type="button" class="btn btn-default navbar-btn navbar-right">Sign in</button>
-          <button ng-show="vm.authService.isLoggedIn()" type="button" class="btn btn-default navbar-btn navbar-right">Sign out</button>
+<body ng-controller="MainController as vm" ng-cloak>
+
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9 col-md-10 cen-jus">
+          <h1 id="heading-text">Broadway Bound</h1>
         </div>
-      </nav>
-    </header> -->
+      </div>
+    </div>
+  </div>
 
-  <!-- Angular is {{ 1 + 1 }}legit2quit. -->
-
-  <section ng-controller="MainController as vm">
-    <button ng-click="vm.getEvents()">Get events!</button>
-    <ul>
-      <li ng-repeat="event in vm.events" id={{ event.id }}>
-        {{event.short_title}}, {{event.type}}
+  <div class="container">
+    <ul class="nav nav-tabs">
+      <li role="presentation" ui-sref-active="active">
+        <a ui-sref="homePage">Home</a>
+      </li>
+      <li role="presentation" ui-sref-active="active">
+        <a ui-sref="aboutPage">About</a>
+      </li>
+      <li role="presentation" ui-sref-active="active" ng-hide="vm.isLoggedIn()">
+        <a ui-sref="register">Register</a>
+      </li>
+      <li role="presentation" ui-sref-active="active" ng-show="vm.isLoggedIn()">
+        <a ui-sref="triumphs">Recommended</a>
+      </li>
+      <li ng-show="vm.isLoggedIn()">
+        <a class="btn" ng-click="vm.logout()">Logout {{ vm.current.user.name }}</a>
       </li>
     </ul>
-  </section>
-
-
 
     <main class="content" ui-view>
-      <!-- ui-router (aka ui.router) inserts templates here -->
     </main>
 
-    <script src="/js/app.module.js"></script>
-    <script src="/js/app.routes.js"></script>
-    <script src="/controllers/main_controller.js"></script>
-    <!-- <script src="/js/token.service.js"></script> -->
-    <!-- <script src="/js/auth.service.js"></script> -->
-    <!-- <script src="/js/user.service.js"></script> -->
-    <!-- <script src="/js/signin.controller.js"></script> -->
-    <!-- <script src="/js/navbar.controller.js"></script> -->
+  </div>
+
+  <footer class="container cen-jus">
+      <p>Please support the Arts<strong></strong></p>
+  </footer>
+
+  <script src="/js/app.module.js"></script>
+  <script src="/js/app.routes.js"></script>
+  <!-- <script src="/services/auth.service.js"></script>
+  <script src="/services/user.dataservice.js"></script> -->
+  <script src="/controllers/main_controller.js"></script>
+  <!-- <script src="/controllers/login_controller.js"></script>
+  <script src="/controllers/users_controller.js"></script>
+  <script src="/controllers/recommended_controller.js"></script> -->
 </body>
 </html>

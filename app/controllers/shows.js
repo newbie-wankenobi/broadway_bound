@@ -79,7 +79,7 @@ var showDelete = function(req, res) {
 
 // Export the function/s as JSON
 module.exports = {
-  showShow:   showShow,
+  showShow:   show,
   showIndex:  showIndex,
   showCreate: showCreate,
   showUpdate: showUpdate,

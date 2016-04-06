@@ -6,8 +6,8 @@ var User        = require('../models/user.js'),
 
 var userAuth = function (req, res, next) {
   User.findOne({
-      phoneNumber: req.body.phoneNumber
-    }).select('phoneNumber password name').exec(function(err, user) {
+      email: req.body.email
+    }).select('email password name').exec(function(err, user) {
 
       if (err) throw err;
 
@@ -27,9 +27,9 @@ var userAuth = function (req, res, next) {
         } else {
 
           var token = jwt.sign({
-            phoneNumber: user.phoneNumber,
-            name:        user.name,
-            _id:         user._id
+            email: user.email,
+            name:  user.name,
+            _id:   user._id
           }, superSecret, {
             expiresInMinutes: 43200
           });
@@ -48,7 +48,7 @@ var userAuth = function (req, res, next) {
   };
 
 var tokenVerify = function(req, res, next) {
-  console.log('Somebody just accessed the Fishin Triumphs API!');
+  console.log('Enjoy your theater experience!');
 
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
@@ -79,23 +79,23 @@ var tokenVerify = function(req, res, next) {
 };
 
 var userCreate = function(req, res) {
-    var user          = new User();
-    user.name         = req.body.name;
-    user.phoneNumber  = req.body.phoneNumber;
-    user.password     = req.body.password;
+    var user      = new User();
+    user.name     = req.body.name;
+    user.email    = req.body.email;
+    user.password = req.body.password;
 
 
     user.save(function(err) {
         if (err) {
 
           if (err.code == 11000)
-            return res.json({ success: false, message: 'A user with those digits already exists! '});
+            return res.json({ success: false, message: 'A user with that email already exists! '});
           else
             return res.json(err);
         }
 
 
-        res.json({ message: "Let's get fishin'!" });
+        res.json({ message: "Let's get singin'!" });
       });
 
 };
@@ -122,9 +122,9 @@ var userUpdate = function(req, res) {
 
         if (err) res.send(err);
 
-        if (req.body.name)        user.name        = req.body.name;
-        if (req.body.phoneNumber) user.phoneNumber = req.body.phoneNumber;
-        if (req.body.password)    user.password    = req.body.password;
+        if (req.body.name)     user.name     = req.body.name;
+        if (req.body.email)    user.email    = req.body.email;
+        if (req.body.password) user.password = req.body.password;
 
         user.save(function(err) {
           if (err) res.send(err);

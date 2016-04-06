@@ -1,22 +1,19 @@
-var express = require('express'),
-    router = express.Router();
+(function() {
+  'use strict';
 
-var ShowsCtrl = require('../controllers/shows'),
-    UsersCtrl  = require('../controllers/users');
+  angular
+    .module('app')
+    .config(AppRoutes);
 
+  AppRoutes.$inject = ["$stateProvider", "$urlRouterProvider"];
 
+  function AppRoutes($stateProvider, $urlRouterProvider) {
+    $stateProvider
+      .state('home', {
+        url: '/',
+        templateUrl: '/templates/list_events.html'
+      });
 
-router.post('/login',                               UsersCtrl.userAuth);
-router.get('/users',                                UsersCtrl.usersAll);
-router.post('/users',                               UsersCtrl.userCreate);
-router.get('/users/:id',     UsersCtrl.tokenVerify, UsersCtrl.userShow);
-router.put('/users/:id',     UsersCtrl.tokenVerify, UsersCtrl.userUpdate);
-router.delete('/users/:id',  UsersCtrl.tokenVerify, UsersCtrl.userDelete);
-
-
-router.get('/shows/:id',    UsersCtrl.tokenVerify, ShowsCtrl.showShow);
-router.get('/shows',        UsersCtrl.tokenVerify, ShowsCtrl.showIndex);
-router.post('/shows',       UsersCtrl.tokenVerify, ShowsCtrl.showCreate);
-router.put('/shows/:id',    UsersCtrl.tokenVerify, ShowsCtrl.showUpdate);
-router.delete('/shows/:id', UsersCtrl.tokenVerify, ShowsCtrl.showDelshows
-module.exports = router;
+    $urlRouterProvider.otherwise('/');
+  }
+})();
