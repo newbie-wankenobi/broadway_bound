@@ -27,16 +27,18 @@
       </nav>
     </header> -->
 
-  Angular is {{ 1 + 1 }}legit2quit.
+  <!-- Angular is {{ 1 + 1 }}legit2quit. -->
 
   <section ng-controller="MainController as vm">
     <button ng-click="vm.getEvents()">Get events!</button>
     <ul>
-      <li ng-repeat="event in vm.events | filter: event.type == 'comedy'" id={{ event.id }}>
+      <li ng-repeat="event in vm.events" id={{ event.id }}>
         {{event.short_title}}, {{event.type}}
       </li>
     </ul>
   </section>
+
+
 
     <main class="content" ui-view>
       <!-- ui-router (aka ui.router) inserts templates here -->

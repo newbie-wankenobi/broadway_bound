@@ -1,11 +1,52 @@
-var mongoose = require('mongoose'),
-    debug    = require('debug')('app:models');
+var mongoose     = require('mongoose'),
+    Schema       = mongoose.Schema,
+    Fish         = require('./show.js'),
+    bcrypt       = require('bcrypt-nodejs');
 
-var userSchema = new mongoose.Schema({
-  name:   String,
-  handle: String
+var UserSchema   = new Schema({
+  name:        { type: String, required: true },
+  phoneNumber: {
+                 type: String,
+                 required: true,
+                 index: { unique: true },
+                 minlength: 7,
+                 maxlength: 10
+  },
+  password:    { type: String, required: true, select: false }
 });
 
-var User = mongoose.model('User', userSchema);
+UserSchema.set('toJSON', {
+  transform: function(doc, ret) {
+    delete ret.password;
+    return ret;
+  }
+});
 
-module.exports = User;
+UserSchema.pre('save', function(next) {
+  var user = this;
+
+  if (!user.isModified('password')) return next();
+
+  bcrypt.hash(user.password, null, null, function(err, hash) {
+    if (err) return next(err);
+
+    user.password = hash;
+    next();
+  });
+});
+
+
+UserSchema.methods.comparePassword = function(password) {
+  var user = this;
+
+  return bcrypt.compareSync(password, user.password);
+};
+
+
+UserSchema.methods.shows = function(callback) {
+  Show.find({user: this._id}, function(err, shows) {
+    callback(err, shows);
+  });
+};
+
+module.exports = mongoose.model('User', UserSchema);
