@@ -1,3 +1,8 @@
+@font-face {
+    font-family: wms2;
+    src: url(./wms2.ttf);
+}
+
 *,
 html,
 body {
@@ -8,6 +13,23 @@ body {
 body {
   font-size: 14px;
   padding: 50px;
+  background-color: maroon;
+  color: #A55D35;
+  background-image: url("./images/broadway_bound.jpeg");
+  background-size: 100% 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 a { color: #00B7FF; }
+
+
+#heading-text {
+  font-family: wms2;
+  color: #66CCFF;
+}
+
+#container {
+  position: fixed;
+}

@@ -1,6 +1,6 @@
 var mongoose     = require('mongoose'),
     Schema       = mongoose.Schema,
-    Fish         = require('./show.js'),
+    Show         = require('./show.js'),
     bcrypt       = require('bcrypt-nodejs');
 
 var UserSchema   = new Schema({

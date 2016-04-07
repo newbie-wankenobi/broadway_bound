@@ -16,7 +16,9 @@
     $stateProvider
       .state('register', {
         url: '/register',
-        templateUrl: '/templates/register.html'
+        templateUrl: '/templates/register.html',
+        controller: 'LoginController',
+        controllerAs: 'vm'
       })
     $stateProvider
       .state('about', {
@@ -27,6 +29,12 @@
       .state('login', {
         url: '/login',
         templateUrl: '/templates/login.html'
+      });
+
+      $stateProvider
+      .state('list_events', {
+        url: '/list_events',
+        templateUrl: '/templates/list_events.html'
       });
 
     $urlRouterProvider.otherwise('/');

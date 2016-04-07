@@ -35,6 +35,9 @@
       <li role="presentation" ui-sref-active="active">
         <a ui-sref="about">About</a>
       </li>
+      <li role="presentation" ui-sref-active="active">
+        <a ui-sref="list_events">List events</a>
+      </li>
       <li role="presentation" ui-sref-active="active" ng-hide="vm.isLoggedIn()">
         <a ui-sref="register">Register</a>
       </li>
@@ -63,8 +66,8 @@
   <script src="/services/auth.service.js"></script>
   <script src="/services/user.dataservice.js"></script>
   <script src="/controllers/main_controller.js"></script>
-  <!-- <script src="/controllers/login_controller.js"></script>
-  <script src="/controllers/users_controller.js"></script>
-  <script src="/controllers/recommended_controller.js"></script> -->
+  <script src="/controllers/login_controller.js"></script>
+  <!-- <script src="/controllers/users_controller.js"></script> -->
+  <!-- <script src="/controllers/recommended_controller.js"></script> -->
 </body>
 </html>

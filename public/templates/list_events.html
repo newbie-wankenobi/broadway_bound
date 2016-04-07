@@ -1,1 +1,9 @@
-<h1>Hello Everyone!</h1>
+<div ng-controller="MainController">
+  <ul ng-repeat="event in vm.events">
+    <li>
+      <h1>{{event.title}}</h1>
+      <a target="_tab" href="{{event.url}}">Buy tickets here!</a> <br>
+      <span>Date: {{event.datetime_local | date: 'MMM d, y - h:mm a' }}</span>
+    </li>
+  </ul>
+</div>
