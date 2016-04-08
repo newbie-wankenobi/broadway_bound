@@ -1,1 +1,21 @@
 <h1>Log In</h1>
+
+<div class="cen-jus">
+
+  <form ng-submit="vm.login()">
+    <div class="row">
+      <label for="emailAddress" class="left-jus col-md-offset-3">Email Address</label>
+      <div class="form-group col-md-6 col-md-offset-3">
+        <input type="text" id="emailAddress" class="form-control" placeholder="Working email, only please!" ng-model="vm.userData.emailAddress" required />
+      </div>
+    </div>
+    <div class="row">
+      <label for="inputPword1" class="left-jus col-md-offset-3">Password</label>
+      <div class="form-group col-md-6 col-md-offset-3">
+        <input type="password" id="inputPword1" class="form-control" placeholder="Save your info!" ng-model="vm.userData.password" required />
+      </div>
+    </div>
+    <button class="btn btn-success submit-login-button" type="submit">The Show Must Go on!</button>
+  </form>
+
+</div>

@@ -28,6 +28,7 @@
     $stateProvider
       .state('login', {
         url: '/login',
+        controller: 'LoginController',
         templateUrl: '/templates/login.html'
       });
 

@@ -31,6 +31,7 @@
   }
 
   // AUTHENTICATION SERVICE
+
   function authService($http, $q, authToken, userDataService, $state, $window) {
 
     var authFactory = {};
@@ -41,7 +42,21 @@
         password: password
       })
         .success(function(data) {
-          authToken.setToken(data);
+          authToken.setToken(data.token);
+
+          userDataService.current.user = data.user;
+          return data;
+        });
+    };
+
+    authFactory.signup = function(email, password) {
+      return $http.post('/api/users', {
+        name:     name,
+        email:    email,
+        password: password
+      })
+        .success(function(data) {
+          authToken.setToken(data.token);
 
           userDataService.current.user = data.user;
           return data;
@@ -58,7 +73,7 @@
     };
 
     authFactory.setUser = function() {
-      var token = authToken.getToken();
+      var token = authToken.getToken().split('.')[1];
       var user = JSON.parse($window.atob(token));
       userDataService.current.user = user;
       return user;

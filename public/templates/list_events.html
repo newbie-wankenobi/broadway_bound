@@ -3,7 +3,8 @@
     <li>
       <h1>{{event.title}}</h1>
       <a target="_tab" href="{{event.url}}">Buy tickets here!</a> <br>
-      <span>Date: {{event.datetime_local | date: 'MMM d, y - h:mm a' }}</span>
+      <span>Date: {{event.datetime_local | date: 'MMM d, y - h:mm a' }}</span> </br>
+      <img style="height: 200px; width: auto;" src="{{event.performers[0].image}}"/>
     </li>
   </ul>
 </div>
