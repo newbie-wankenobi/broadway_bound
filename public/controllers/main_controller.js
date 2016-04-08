@@ -15,7 +15,7 @@
     vm.logout      = authService.logout;
     vm.isLoggedIn  = authService.isLoggedIn;
 
-        vm.$state = $state;
+        vm.$state  = $state;
 
 
     function getEvents() {

@@ -37,8 +37,8 @@ var userAuth = function (req, res, next) {
           res.json({
             success: true,
             message: 'Enjoy your token!',
-            token: token,
-            user: user
+            token:   token,
+            user:    user
           });
         }
 

@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app')
+    .module ('app')
     .factory('authToken', authToken)
     .factory('authService', authService)
     .factory('authInterceptor', authInterceptor);
@@ -82,13 +82,11 @@
     return authFactory;
   };
 
-  // AUTH INTERCEPTOR TO BLOCK UNAUTHORIZED USERS
   function authInterceptor($q, $location, authToken) {
     var interceptorFactory = {};
 
     interceptorFactory.request = function(config) {
 
-      // grab that token!
       var token = authToken.getToken();
 
       if (token) config.headers['x-access-token'] = token;

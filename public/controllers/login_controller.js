@@ -11,9 +11,9 @@
       var vm = this;
 
 
-      vm.createUser = createUser;
-      vm.login = login;
-      vm.isLoggedIn = authService.isLoggedIn;
+      vm.createUser  = createUser;
+      vm.login       = login;
+      vm.isLoggedIn  = authService.isLoggedIn;
       vm.currentUser = userDataService.current.user;
 
       vm.placeHolder = {
@@ -28,15 +28,12 @@
         $log.debug('Logging in:');
 
         vm.userData = {
-          email: '',
-          name: '',
+          email:    '',
+          name:     '',
           password: ''
         }
 
         authService.signup(vm.userData);
-        // vm.inputName1   = vm.userData.name;
-        // vm.emailAddress = vm.userData.emailAddress;
-        // vm.inputPword1  = '';
 
         $state.go('list_events');
       }
@@ -45,8 +42,8 @@
         console.log("login is being clicked");
 
         vm.userData = {
-          email: '',
-          name: '',
+          email:    '',
+          name:     '',
           password: ''
         }
 
