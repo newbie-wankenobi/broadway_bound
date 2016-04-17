@@ -1,0 +1,9 @@
+<div>
+  <h1>To see a complete list of shows in your area, please sign up or log in.</h1>
+</div>
+<div ng-controller="MainController">
+  <h1>{{vm.randomEvent.title}}</h1>
+  <a target="_tab" href="{{vm.randomEvent.url}}">Buy tickets here!</a> <br>
+  <span>Date: {{vm.randomEvent.datetime_local | date: 'MMM d, y - h:mm a' }}</span> </br>
+  <img style="height: 200px; width: auto;" src="{{vm.randomEvent.performers[0].image}}"/>
+</div>

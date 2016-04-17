@@ -11,7 +11,7 @@
     $stateProvider
       .state('home', {
         url: '/',
-        templateUrl: '/templates/list_events.html'
+        templateUrl: '/templates/home.html'
       })
     $stateProvider
       .state('register', {
@@ -29,6 +29,7 @@
       .state('login', {
         url: '/login',
         controller: 'LoginController',
+        controllerAs: 'vm',
         templateUrl: '/templates/login.html'
       });
 
